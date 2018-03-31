@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+    </style>
+</head>
+
+<body>
+<div id='app'>
+    <h1> Todos <button @click="add()">+</button></h1>
+    <div v-for="row in rows">
+        <input type="text" v-model="row.doc.title" @change="updater(row)"><button @click="deleteRow(row)">X</button>
+    </div>
+</div>
+
+<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+<script src='https://unpkg.com/vue'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/pouchdb@6.3.4/dist/pouchdb.min.js"></script>
+
+
+<script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        rows: []
+      },
+      methods: {
+        add () {
+          addTodo('New Todo')
+    },
+        updater (row) {
+          db.put(row.doc)
+        },
+        deleteRow (row) {
+          db.remove(row.doc)
+        }
+      }
+    })
+
+var db = new PouchDB('papers')
+var remoteCouch = ''
+
+updatedDB()
+
+var sync = PouchDB.sync('papers', remoteCouch, {
+      live: true,
+      retry: true
+    }).on('change', function (info) {
+      console.log('Change')
+  updatedDB()
+}).on('paused', function (err) {
+      console.log('Paused')
+}).on('active', function () {
+      console.log('ACtive')
+  updatedDB()
+}).on('denied', function (err) {
+      console.log('Denied')
+}).on('complete', function (info) {
+      console.log('Complete')
+}).on('error', function (err) {
+      console.log('Error')
+})
+
+db.changes({
+      since: 'now',
+      live: true
+    }).on('change', updatedDB)
+
+function sync () {
+      var opts = { live: true }
+    db.replicate.to(remoteCouch, opts, syncError)
+    db.replicate.from(remoteCouch, opts, syncError)
+}
+
+    function syncError (error) {
+      console.log('There was an error in syncing - ' + error)
+}
+
+    function addTodo (text) {
+      var todo = {
+        _id: new Date().toISOString(),
+        title: text,
+        completed: false
+      }
+  db.put(todo, function callback (err, result) {
+        if (!err) {
+          console.log('Successfully posted a todo!')
+        }
+      })
+}
+
+    function updatedDB () {
+      db.allDocs({ include_docs: true }, function (err, doc) {
+        app.rows = doc.rows
+    })
+}
+
+    // sync();
+</script>
+
+</body>
+
+</html>

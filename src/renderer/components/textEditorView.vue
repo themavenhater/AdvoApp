@@ -23,8 +23,9 @@
             </v-flex>
         </v-layout>
         </v-card>
+        v-conti
         <v-flex xs12>
-            <quill-editor dir="rtl" v-model="content" :options="editorOption">
+            <quill-editor dir="rtl" ref="myTextEditor" v-model="content" :options="editorOption">
             </quill-editor>
 
           <v-btn @click="save()" color="blue lighten-2"><v-icon blue>description</v-icon> WORD حفظ في الوورد</v-btn>
@@ -50,7 +51,7 @@
       },
       data: function () {
         return {
-          content: '',
+          content: '<br><br><br><br><br><br><br><br><br>',
           editorOption: {
             modules: {
               toolbar: [

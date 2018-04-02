@@ -19,7 +19,7 @@
                 <v-btn @click="show('fr/FNat.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code de la nationalité Algérienne</v-btn>
                 <v-btn @click="show('fr/FPCivil.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code de procédure civile et administrative</v-btn>
                 <v-btn @click="show('fr/FPenal.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code pénal</v-btn>
-                <v-btn @click="show('fr/FPeni.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code de l'organisation pénitentiaire et de la réinsertion sociale des détenus.</v-btn>
+                <v-btn @click="show('fr/FPeni.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code de l'organisation pénitentiaire <br>et de la réinsertion sociale des détenus.</v-btn>
                 <v-btn @click="show('fr/FPensionM.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code des pensions militaires</v-btn>
                 <v-btn @click="show('fr/FPPenal.pdf')" color="blue lighten-2"><v-icon>arrow_forward</v-icon>Code de procédure pénale</v-btn>
             </v-flex>
@@ -70,8 +70,5 @@
 button {
     width: 100%;
     font-weight: bold;
-}
-.ar button {
-    color: blue lighten-2;
 }
 </style>

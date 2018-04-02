@@ -38,12 +38,12 @@
       <v-content>
         <v-container fluid fill-height>
           <v-slide-y-transition mode="out-in">
-            <router-view></router-view>
+            <router-view/>
           </v-slide-y-transition>
         </v-container>
       </v-content>
       <v-footer :fixed="fixed" app>
-        <v-spacer></v-spacer>
+        <v-spacer/>
         <span>&copy; 2018 Blka.Y</span>
       </v-footer>
     </v-app>
@@ -63,7 +63,7 @@
         { icon: 'account_balance', title: 'الجلسات', to: '/audiences' },
         { icon: 'account_box', title: 'قائمة جهات الإتصال', to: '/clients' },
         { icon: 'apps', title: 'قائمة الزملاء', to: '/colleagues' },
-        { icon: 'schedule', title: 'جدول مواعيد', to: '/carnet' },
+        { icon: 'schedule', title: 'جدول مواعيد', to: '/carnets' },
         { icon: 'note', title: 'ملاحظات', to: '/notes' },
         { icon: 'library_books', title: 'مكتبة قانونية', to: '/biblio' },
         { icon: 'format_align_right', title: 'محرر النصوص', to: '/textEditor' }

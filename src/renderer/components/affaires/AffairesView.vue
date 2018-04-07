@@ -12,14 +12,14 @@
                         <v-btn @click="aa" color="green" icon><v-icon>cached</v-icon></v-btn>
                         <v-btn route to="/addAffaire"color="blue lighten-3"><v-icon>add</v-icon>إضافة قضية</v-btn>
                     </v-card-title>
-                    <v-data-table disable-initial-sort=true :headers="headers" :items="Cases" :search="search">
+                    <v-data-table disable-initial-sort="" :headers="headers" :items="Cases" :search="search">
                         <template slot="items" slot-scope="props">
                             <td class="text-xs-right">{{ props.item.entryDate }}</td>
                             <td class="text-xs-right">{{ props.item.numberAffaire }}</td>
                             <td class="text-xs-right">{{ props.item.client }}</td>
                             <td class="text-xs-right">{{ props.item.natureAffaire.text }}</td>
                             <td class="text-xs-right">{{ props.item.against }}</td>
-                            <td class="text-xs-right">{{ props.item.againstAdvo.text }}</td>
+                            <td class="text-xs-right">{{ props.item.againstAdvo}}</td>
                             <td class="text-xs-right">{{ props.item.juridiction }}</td>
                             <td class="text-xs-right">
                                 <v-layout row justify-center>
@@ -94,10 +94,6 @@
           this.dialog = false
           this.aa()
         }
-      },
-      created: function () {
-        this.$store.dispatch('getCases')
-        console.log('test')
       }
     }
 </script>

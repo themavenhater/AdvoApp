@@ -60,10 +60,6 @@
         aa: function () {
           this.$store.dispatch('getColleagues')
         }
-      },
-      created: function () {
-        this.$store.dispatch('getColleagues')
-        console.log('test')
       }
     }
 </script>

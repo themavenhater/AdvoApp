@@ -88,7 +88,7 @@
       },
       methods: {
         aa: function () {
-          this.$store.dispatch('getAllUsers', 'USER')
+          this.$store.dispatch('getAllUsers')
         },
         edit (item) {
           this.$router.push({ name: 'clientProfile', params: { id: item._id } })
@@ -99,10 +99,6 @@
           this.dialog = false
           this.aa()
         }
-      },
-      created: function () {
-        this.$store.dispatch('getAllUsers', 'USER')
-        console.log('test')
       }
     }
 </script>

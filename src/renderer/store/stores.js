@@ -70,8 +70,8 @@ export const store = new Vuex.Store({
         d.commit('addToDB', obj)
       }, 200)
     },
-    getAllUsers: (d, start) => {
-      d.commit('getAllUsers', start)
+    getAllUsers: (d) => {
+      d.commit('getAllUsers', 'USER')
     },
     getCases: (d) => {
       setTimeout(function () {

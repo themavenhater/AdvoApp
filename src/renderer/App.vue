@@ -14,6 +14,9 @@
         </v-list>
       </v-navigation-drawer>
       <v-toolbar fixed app :clipped="clipped" :right="true" class="green lighten-1">
+        <v-btn icon fab>
+          <v-icon>close</v-icon>
+        </v-btn>
         <v-menu bottom left>
           <v-btn icon slot="activator">
             <v-icon>settings</v-icon>
@@ -72,7 +75,13 @@
       right: true,
       rightDrawer: false,
       title: 'برنامج إدارة مكتب الأستاذ زعاف علال'
-    })
+    }),
+    created: function () {
+      this.$store.dispatch('getCases')
+      this.$store.dispatch('getAllUsers')
+      this.$store.dispatch('getColleagues')
+      this.$store.dispatch('getAudiences')
+    }
   }
 </script>
 

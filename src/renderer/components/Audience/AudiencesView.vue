@@ -58,10 +58,6 @@
         aa: function () {
           this.$store.dispatch('getAudiences')
         }
-      },
-      created: function () {
-        this.$store.dispatch('getAudiences')
-        console.log('test')
       }
     }
 </script>

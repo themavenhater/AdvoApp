@@ -1,39 +1,27 @@
 <template>
-    <div>
-        <h1>liste <v-icon>assignment_returned</v-icon></h1>
-        <v-card>
-            <v-layout row>
-            <v-flex xs2>
-                <v-btn @click="load('file1')"> مقال 1</v-btn>
-             </v-flex>
-            <v-flex xs2>
-                <v-btn @click="load('file1')"> مقال 1</v-btn>
-            </v-flex>
-            <v-flex xs2>
-                <v-btn @click="load('file1')"> مقال 1</v-btn>
-            </v-flex>
-            <v-flex xs2>
-                <v-btn @click="load('file1')"> مقال 1</v-btn>
-            </v-flex>
-            <v-flex xs2>
-                <v-btn @click="load('file1')"> مقال 1</v-btn>
-            </v-flex>
-            <v-flex xs2>
-                <v-btn @click="load('file1')"> مقال 1</v-btn>
+    <v-container grid-list-xl>
+        <h1 align="center">قائمة المقالات النموذجية
+            <v-icon>assignment_returned</v-icon>
+        </h1>
+        <v-layout row>
+            <v-btn @click="load('file1')"> مقال 1</v-btn>
+        </v-layout>
+        <v-layout>
+            <v-flex xs12>
+                <quill-editor dir="rtl" ref="myTextEditor" v-model="content" :options="editorOption">
+                </quill-editor>
+                <v-btn @click="save()" color="blue lighten-2">
+                    <v-icon blue>description</v-icon>
+                    WORD حفظ في الوورد
+                </v-btn>
+                <v-btn @click="clear()" color="green lighten-1">
+                    <v-icon>clear_all</v-icon>
+                    مسح الكل
+                </v-btn>
+                <v-btn onclick="window.print()">Print</v-btn>
             </v-flex>
         </v-layout>
-        </v-card>
-        v-conti
-        <v-flex xs12>
-            <quill-editor dir="rtl" ref="myTextEditor" v-model="content" :options="editorOption">
-            </quill-editor>
-
-          <v-btn @click="save()" color="blue lighten-2"><v-icon blue>description</v-icon> WORD حفظ في الوورد</v-btn>
-          <v-btn @click="clear()" color="red lighten-1"><v-icon>clear_all</v-icon>مسح الكل</v-btn>
-
-        </v-flex>
-    </div>
-
+    </v-container>
 </template>
 
 <script>
@@ -41,7 +29,8 @@
     import 'quill/dist/quill.snow.css'
     import 'quill/dist/quill.bubble.css'
     import hljs from 'highlight.js'
-    import { quillEditor } from 'vue-quill-editor'
+    import {quillEditor} from 'vue-quill-editor'
+
     const htmlDocx = require('html-docx-js/dist/html-docx')
     const fs = require('file-saver')
 
@@ -78,6 +67,9 @@
       computed: {
         editor () {
           return this.$refs.myTextEditor.quill
+        },
+        tt () {
+          this.content = '<br><br><br><br><br>'
         }
       },
       methods: {
@@ -89,7 +81,7 @@
           fs.saveAs(converted, 'القضية.docx')
         },
         clear: function () {
-          this.content = ''
+          this.content = '<br><br><br><br><br><br><br><br><br>'
         },
         load: function (file) {
           this.content = this.$store.state.savedDoc[file].html
@@ -102,6 +94,7 @@
     h1 {
         text-align: right;
     }
+
     p {
         direction: rtl;
     }

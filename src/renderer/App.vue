@@ -1,5 +1,5 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <v-app>
       <v-navigation-drawer fixed :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" :right="true" app class="brown darken-2">
         <v-list style="color: aliceblue">
@@ -81,6 +81,7 @@
       this.$store.dispatch('getAllUsers')
       this.$store.dispatch('getColleagues')
       this.$store.dispatch('getAudiences')
+      console.log('erersdsd' + Object.keys(this.$store.state.Cases).length)
     }
   }
 </script>

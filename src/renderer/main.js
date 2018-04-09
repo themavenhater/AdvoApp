@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import {store} from './store/stores'
 import PouchDB from 'pouchdb-browser'
+import vueCalendar from 'vue2-simple-calendar'
 
 PouchDB.plugin(require('pouchdb-find'))
 PouchDB.plugin(require('pouchdb-live-find'))
@@ -14,6 +15,8 @@ Vue.use(require('vue-pouch'), {
   pouch: PouchDB, // optional if `PouchDB` is available on the global object
   defaultDB: 'AdvoBase' // the database to use if none is specified in the pouch setting of the vue component
 })
+Vue.use(vueCalendar)
+
 Vue.use(Vuetify, {
   theme: {
     primary: '#3f51b5',

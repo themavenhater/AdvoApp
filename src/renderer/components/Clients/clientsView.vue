@@ -29,21 +29,9 @@
                                 <v-btn fab small class="green" @click.native="edit(props.item)">
                                     <v-icon color="white">edit</v-icon>
                                 </v-btn>
-
-                                    <v-dialog v-model="dialog" persistent max-width="290">
-                                        <v-btn fab small class="red" dark slot="activator">
-                                            <v-icon>delete</v-icon>
-                                        </v-btn>
-                                        <v-card>
-                                            <v-card-title class="headline"> {{props.item.email}}</v-card-title>
-                                            <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
-                                            <v-card-actions>
-                                                <v-spacer></v-spacer>
-                                                <v-btn color="green darken-1" flat @click.native="dialog = false">Disagree</v-btn>
-                                                <v-btn color="green darken-1" flat  @click.native="remove(props.item)">Agree</v-btn>
-                                            </v-card-actions>
-                                        </v-card>
-                                    </v-dialog>
+                                 <v-btn fab small class="red" dark  @click.native="remove(props.item)">
+                                    <v-icon>delete</v-icon>
+                                </v-btn>
                                 </v-layout>
                             </td>
                         </template>
@@ -91,12 +79,11 @@
           this.$store.dispatch('getAllUsers')
         },
         edit (item) {
-          this.$router.push({ name: 'clientProfile', params: { id: item._id } })
+          this.$router.push({name: 'clientProfile', params: {id: item._id}})
         },
         remove (item) {
-          console.log('inside')
-          this.$store.dispatch('delete', item)
-          this.dialog = false
+          console.log(item)
+          // this.$store.dispatch('delete', item)
           this.aa()
         }
       }
@@ -106,5 +93,5 @@
 <style scoped>
 h1 {
     text-align: right;
-}
+    }
 </style>

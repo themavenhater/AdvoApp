@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-xl>
+    <v-container grid-list-xs>
         <h1 align="center">المكتبة القانونية</h1>
         <v-layout row>
             <v-flex xs6><h2>En Français</h2></v-flex>

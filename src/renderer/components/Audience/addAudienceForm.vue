@@ -60,7 +60,7 @@
             let f = {
               _id: 'AUDI_' + this.Case._id + '_' + this.dateAudience,
               juridiction: this.juridiction,
-              dateAudience: this.dateAudience,
+              dateAudience: this.dateAudience.replace(/-/g, '/'),
               TypeAudience: this.TypeAudience.text,
               detailsAudience: this.detailsAudience,
               client: this.Case.client

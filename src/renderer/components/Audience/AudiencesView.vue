@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-xl>
+    <v-container grid-list-xS>
         <div align="right">
             <h1>قائمة الجلسات</h1>
         </div>

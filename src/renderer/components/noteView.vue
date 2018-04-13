@@ -1,20 +1,28 @@
-<template>
-    <v-container fluid grid-list-xl>
+<template >
+    <v-container fluid grid-list-xs>
         <v-layout>
             <v-flex xs12>
                 <div align="center">
                     <h1>ملاحضات</h1>
                     <v-text-field v-model="message" placeholder="New Todo" required/>
-                    <v-btn v-if="message!==''" @click="colorBack();$pouch.post('todos', {message: message, color: color});color='';message='';">إضافة ملاحضة</v-btn>
+                    <v-btn v-if="message!==''" @click="$pouch.post('todos', {message: message}); message=''">إضافة ملاحضة</v-btn>
                 </div>
             </v-flex>
         </v-layout>
         <v-layout row justify-space-around wrap>
-            <v-flex v-for="todo in todos" xs3>
-                <input v-model="todo.message" @change="$pouch.put('todos', todo)" :class="todo.color"/>
-                        <button @click="$pouch.remove('todos', todo)">
-                        <v-icon>delete</v-icon>
-                        </button>
+            <v-flex xs12 class="elevation-2" style="border-radius: 10px">
+            <v-list>
+                <v-list-tile avatar v-for="todo in todos" @click="">
+                    <v-list-tile-content>
+                        <input v-model="todo.message" @change="$pouch.put('todos', todo)" :class="todo.color"/>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                        <v-btn icon ripple @click="$pouch.remove('todos', todo)">
+                            <v-icon color="red">delete</v-icon>
+                        </v-btn>
+                    </v-list-tile-action>
+                </v-list-tile>
+            </v-list>
             </v-flex>
         </v-layout>
     </v-container>
@@ -24,8 +32,7 @@
     export default {
       data: function () {
         return {
-          message: '',
-          color: ''
+          message: ''
         }
       },
       // VuePouch adds a `pouch` config option to all components.
@@ -34,9 +41,6 @@
         todos: {/* empty selector */}
       },
       methods: {
-        colorBack: function () {
-          this.color = '#' + (0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6)
-        }
       }
     }
 </script>

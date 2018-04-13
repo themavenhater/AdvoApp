@@ -9,7 +9,7 @@
                 <v-card-title>
                     <v-text-field append-icon="search" dir="auto" label="بحث" single-line hide-details v-model="search"/>
                     <v-spacer/>
-                    <v-btn @click="aa" color="green"><v-icon>cached</v-icon></v-btn>
+                    <v-btn @click="aa" color="green" icon><v-icon>cached</v-icon></v-btn>
                     <v-btn route to="/addColleague"color="blue lighten-3"><v-icon>add</v-icon>إضافة زميل</v-btn>
                 </v-card-title>
                 <v-data-table :headers="headers" :items="Colleagues" :search="search">

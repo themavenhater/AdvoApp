@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-xl>
+    <v-container grid-list-xs>
         <div align="right">
             <h1> قائمة القضايا</h1>
         </div>
@@ -85,8 +85,8 @@
         aa: function () {
           this.$store.dispatch('getCases')
         },
-        edit (item) {
-          this.$router.push({ name: 'AffaireProfile', params: { id: item } })
+        edit: function (item) {
+          this.$router.push({name: 'AffaireProfile', params: {id: item}})
         },
         remove (item) {
           console.log('inside')

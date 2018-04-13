@@ -74,14 +74,13 @@
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'برنامج إدارة مكتب الأستاذ زعاف علال'
+      title: 'برنامج إدارة مكتب محاماة'
     }),
     created: function () {
-      this.$store.dispatch('getCases')
       this.$store.dispatch('getAllUsers')
       this.$store.dispatch('getColleagues')
       this.$store.dispatch('getAudiences')
-      console.log('erersdsd' + Object.keys(this.$store.state.Cases).length)
+      this.$store.dispatch('getCases')
     }
   }
 </script>

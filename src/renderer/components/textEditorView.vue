@@ -1,13 +1,17 @@
 <template>
-    <v-container grid-list-xl>
+    <v-container grid-list-xs>
         <h1 align="center">قائمة المقالات النموذجية
             <v-icon>assignment_returned</v-icon>
         </h1>
         <v-layout row>
+            <v-flex align="center" xs3>
+                <v-text-field label="إسم الملف" v-model="docname"/>
+            </v-flex>
+
             <v-btn @click="load('file1')"> مقال 1</v-btn>
         </v-layout>
         <v-layout>
-            <v-flex xs12>
+            <v-flex xs10>
                 <quill-editor dir="rtl" ref="myTextEditor" v-model="content" :options="editorOption">
                 </quill-editor>
                 <v-btn @click="save()" color="blue lighten-2">
@@ -41,6 +45,7 @@
       data: function () {
         return {
           content: '<br><br><br><br><br><br><br><br><br>',
+          docname: '',
           editorOption: {
             modules: {
               toolbar: [
@@ -81,7 +86,7 @@
           fs.saveAs(converted, 'القضية.docx')
         },
         clear: function () {
-          this.content = '<br><br><br><br><br><br><br><br><br>'
+          this.content = ''
         },
         load: function (file) {
           this.content = this.$store.state.savedDoc[file].html

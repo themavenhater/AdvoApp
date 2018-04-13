@@ -1,11 +1,14 @@
 <template>
-
+<v-container grid-list-xs>
+    <h1 align="center">جدول المواعيد
+    <v-icon>date_range</v-icon></h1>
     <vue-calendar
             :show-limit="3"
             :events="events"
             @show-all="showAll"
             @day-clicked="dayClicked"
     ></vue-calendar>
+</v-container>
 </template>
 
 <script>
@@ -14,8 +17,8 @@
       data: function () {
         return {
           events: [ {
-            start: new Date(2018, 4, 9),
-            end: new Date(2018, 4, 9),
+            start: new Date('2018-4-6'),
+            end: new Date('2018-4-9'),
             title: 'FooEvent',
             class: 'testClass'
           } ]

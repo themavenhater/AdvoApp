@@ -12,13 +12,21 @@
                         <v-btn @click="aa" color="green" icon><v-icon>cached</v-icon></v-btn>
                         <v-btn route to="/addAudience"color="blue lighten-3"><v-icon>add</v-icon>إضافة جلسة</v-btn>
                     </v-card-title>
-                    <v-data-table disable-initial-sort=true :headers="headers" :items="Audiences" :search="search">
+                    <v-data-table :disable-initial-sort="true" :headers="headers" :items="Audiences" :search="search">
                         <template slot="items" slot-scope="props">
                             <td class="text-xs-right">{{ props.item.dateAudience }}</td>
                             <td class="text-xs-right">{{ props.item.client }}</td>
                             <td class="text-xs-right">{{ props.item.juridiction }}</td>
                             <td class="text-xs-right">{{ props.item.TypeAudience }}</td>
                             <td class="text-xs-right">{{ props.item.detailsAudience }}</td>
+                            <td class="text-xs-right">
+                                <v-layout row justify-center>
+                                <v-btn fab small class="red" dark  @click.native="remove(props.item)">
+                                <v-icon>delete</v-icon>
+                                </v-btn>
+                                </v-layout>
+                            </td>
+
                         </template>
                         <template slot="pageText" slot-scope="{ pageStart, pageStop }">
                             From {{ pageStart }} to {{ pageStop }}
@@ -39,6 +47,7 @@
       name: 'audiences-view',
       data: function () {
         return {
+          true: true,
           tmp: '',
           search: '',
           pagination: {},
@@ -57,6 +66,11 @@
       methods: {
         aa: function () {
           this.$store.dispatch('getAudiences')
+        },
+        remove (item) {
+          console.log('inside')
+          this.$store.dispatch('delete', item)
+          this.aa()
         }
       }
     }

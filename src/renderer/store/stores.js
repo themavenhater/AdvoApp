@@ -101,7 +101,7 @@ export const store = new Vuex.Store({
     delete: (d, id) => {
       setTimeout(function () {
         d.commit('delete', id)
-      }, 200)
+      })
     },
     getclient: (d, id) => {
       setTimeout(function () {
@@ -154,5 +154,16 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
+    getAudiences: (state) => {
+      var nextAudi = state.Audiences.map(audi => {
+        return {
+          start: new Date(audi.dateAudience),
+          end: new Date(audi.dateAudience),
+          title: audi.detailsAudience
+        }
+      })
+      console.log(nextAudi)
+      return nextAudi
+    }
   }
 })

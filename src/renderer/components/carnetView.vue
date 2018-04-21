@@ -1,7 +1,9 @@
 <template>
 <v-container grid-list-xs>
-    <h1 align="center">جدول المواعيد
-    <v-icon>date_range</v-icon></h1>
+    <div align="center">
+    <h1>جدول المواعيد</h1>
+       <v-icon>date_range</v-icon>
+    </div>
     <vue-calendar
             :show-limit="3"
             :events="events"
@@ -16,12 +18,6 @@
       name: 'carnetView',
       data: function () {
         return {
-          events: [ {
-            start: new Date('2018-4-6'),
-            end: new Date('2018-4-9'),
-            title: 'FooEvent',
-            class: 'testClass'
-          } ]
         }
       },
       methods: {
@@ -34,6 +30,12 @@
       created () {
         this.$calendar.eventBus.$on('show-all', events => this.showAll(events))
         this.$calendar.eventBus.$on('day-clicked', day => this.dayClicked(day))
+      },
+      computed: {
+        events () {
+          console.log('zz')
+          return this.$store.getters.getAudiences
+        }
       }
     }
 </script>

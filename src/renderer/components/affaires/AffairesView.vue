@@ -26,20 +26,9 @@
                                     <v-btn fab small class="teal" color="green" @click.native="edit(props.item._id)">
                                         <v-icon color="white">edit</v-icon>
                                     </v-btn>
-                                    <v-dialog v-model="dialog" persistent max-width="290">
-                                        <v-btn fab small color="red" slot="activator">
-                                            <v-icon color="white">delete</v-icon>
-                                        </v-btn>
-                                        <v-card>
-                                            <v-card-title class="headline"> {{props.item.client}}</v-card-title>
-                                            <v-card-text>{{props.item.client}} تأكيد محو قضية</v-card-text>
-                                            <v-card-actions>
-                                                <v-spacer></v-spacer>
-                                                <v-btn color="green darken-1" flat @click.native="dialog = false">إلفاء</v-btn>
-                                                <v-btn color="green darken-1" flat  @click.native="remove(props.item._id)">نعم</v-btn>
-                                            </v-card-actions>
-                                        </v-card>
-                                    </v-dialog>
+                                    <v-btn fab small @click.native="remove(props.item)" color="red">
+                                        <v-icon color="white">delete</v-icon>
+                                    </v-btn>
                                 </v-layout>
                             </td>
                         </template>
@@ -90,8 +79,7 @@
         },
         remove (item) {
           console.log('inside')
-          this.$store.dispatch('delete', {id: item})
-          this.dialog = false
+          this.$store.dispatch('delete', item)
           this.aa()
         }
       }

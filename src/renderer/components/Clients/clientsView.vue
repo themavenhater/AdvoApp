@@ -83,7 +83,7 @@
         },
         remove (item) {
           console.log(item)
-          // this.$store.dispatch('delete', item)
+          this.$store.dispatch('delete', item)
           this.aa()
         }
       }

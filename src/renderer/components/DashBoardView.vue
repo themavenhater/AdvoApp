@@ -13,7 +13,7 @@
      </v-layout>
      <br>
      <v-layout wrap>
-          <v-flex xs2 v-for="audi in Audiences" v-if="new Date().getTime() > new Date(audi.dateAudience).getTime()">
+          <v-flex xs2 v-for="audi in Audiences" v-if="new Date().getTime() < new Date(audi.dateAudience).getTime()">
               <v-card hover raised>
                   <v-card-title primary-title>
                       <div>
@@ -46,10 +46,10 @@
                          </v-flex>
                          <v-flex d-flex xs9 >
                              <v-layout class="mt-2 mb-0 pa-0" row wrap>
-                                 <x-flex d-flex xs12>
+                                 <v-flex d-flex xs12>
                                      <div class="silver--text subheading">عدد الزبائن </div>
 
-                                 </x-flex>
+                                 </v-flex>
                                  <v-flex d-flex xs12>
                                      <div class="silver--text display-1">{{Object.keys(allContact).length}}</div>
                                  </v-flex>
@@ -68,9 +68,9 @@
                          </v-flex>
                          <v-flex d-flex xs9 >
                              <v-layout class="mt-2 mb-0 pa-0" row wrap>
-                                 <x-flex d-flex xs12>
+                                 <v-flex d-flex xs12>
                                      <div class="silver--text subheading">عدد القضايا </div>
-                                 </x-flex>
+                                 </v-flex>
                                  <v-flex d-flex xs12>
                                      <div class="silver--text display-1">{{Object.keys(Cases).length}}</div>
                                  </v-flex>
@@ -89,9 +89,9 @@
                          </v-flex>
                          <v-flex d-flex xs9 >
                              <v-layout class="mt-2 mb-0 pa-0" row wrap>
-                                 <x-flex d-flex xs12>
+                                 <v-flex d-flex xs12>
                                      <div class="silver--text subheading">عدد الجلسات</div>
-                                 </x-flex>
+                                 </v-flex>
                                  <v-flex d-flex xs12>
                                      <div class="silver--text display-1">{{Object.keys(Audiences).length}}</div>
                                  </v-flex>
@@ -108,11 +108,11 @@
                          <v-flex d-flex xs3>
                              <v-icon class="mx-0" x-large light>apps</v-icon>
                          </v-flex>
-                         <v-flex d-flex xs9 >
+                         <v-flex d-flex xs9>
                              <v-layout class="mt-2 mb-0 pa-0" row wrap>
-                                 <x-flex d-flex xs12>
+                                 <v-flex d-flex xs12>
                                      <div class="silver--text subheading">عدد الزملاء</div>
-                                 </x-flex>
+                                 </v-flex>
                                  <v-flex d-flex xs12>
                                      <div class="silver--text display-1">{{Object.keys(Colleagues).length}}</div>
                                  </v-flex>

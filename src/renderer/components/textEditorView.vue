@@ -10,10 +10,12 @@
 
             <v-btn @click="load('file1')"> مقال 1</v-btn>
         </v-layout>
-        <v-layout>
-            <v-flex xs10>
+        <v-layout wrap>
+            <v-flex xs12 style="height: 450px ;overflow: auto">
                 <quill-editor dir="rtl" ref="myTextEditor" v-model="content" :options="editorOption">
                 </quill-editor>
+            </v-flex>
+            <v-flex xs12>
                 <v-btn @click="save()" color="blue lighten-2">
                     <v-icon blue>description</v-icon>
                     WORD حفظ في الوورد
@@ -34,7 +36,6 @@
     import 'quill/dist/quill.bubble.css'
     import hljs from 'highlight.js'
     import {quillEditor} from 'vue-quill-editor'
-
     const htmlDocx = require('html-docx-js/dist/html-docx')
     const fs = require('file-saver')
 
@@ -58,7 +59,7 @@
                 [{'size': ['small', false, 'large', 'huge']}],
                 [{'font': []}],
                 [{'color': []}, {'background': []}],
-                [{'align': []}],
+                [{'align': 'rtl'}],
                 ['clean'],
                 ['link', 'image']
               ],
@@ -79,11 +80,11 @@
       },
       methods: {
         save: function () {
-          let lool = '<!Doctype html> ' + '<html><head><meta charset="utf-8"><style>h1{text-align:center}h2{text-align:right} p{text-align:right}</style><body>' + this.content + '</body></head></html>'
+          let lool = '<!Doctype html> ' + '<html><head><meta charset="utf-8"><style> body{ width: 100%; height: 100%} h1{text-align:center}h2{text-align:right} p{text-align:right}</style><body>' + this.content + '</body></head></html>'
           console.log(typeof lool)
           var converted = htmlDocx.asBlob(lool)
           console.log(converted)
-          fs.saveAs(converted, 'القضية.docx')
+          fs.saveAs(converted, '' + this.docname + '.docx')
         },
         clear: function () {
           this.content = ''
@@ -96,11 +97,5 @@
 </script>
 
 <style scoped>
-    h1 {
-        text-align: right;
-    }
 
-    p {
-        direction: rtl;
-    }
 </style>
